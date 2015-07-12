@@ -4,10 +4,29 @@
   <title>Fact Keeper</title>
   <meta charset="UTF-8">
    <link rel="stylesheet" href="assets/styles/style.min.css" />
-   <script src="assets/scripts/script.min.js"></script>
+   <script src="assets/scripts/jquery-2.1.4.min.js"></script>
+   <!--- <script src="assets/scripts/script.min.js"></script> -->
    <script src="assets/scripts/facts.json"></script>
+   <script src="assets/scripts/script.js"></script>
 </head>
 <body>
-  Test
+
+  <section class="select-option">
+    <input id="random-question" type="button" value="Random Question">
+  </section>
+
+  <section class="progress-area">
+    <p class="current-score">3</p> out of <p class="total">5</p>
+  </section>
+
+  <section class="question-section">
+    <header>Question 1</header>
+    <ul class="answers-list">
+      <li>Answer 1</li>
+      <li>Answer 2</li>
+      <li>Answer 3</li>
+    </ul>
+  </section>
+
 </body>
 </html>

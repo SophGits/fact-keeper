@@ -6,15 +6,12 @@ var concat = require('gulp-concat');
 
 gulp.task('default', ['watch']);
 
-gulp.task('minify-scripts', function() {
-  return gulp.src([
-    "assets/scripts/jquery-2.1.4.min.js",
-    "assets/scripts/script.js"
-    ])
-  .pipe(concat('script.min.js'))
-  .pipe(uglify())
-  .pipe(gulp.dest('./assets/scripts'));
-});
+// gulp.task('minify-scripts', function() {
+//   return gulp.src([ "assets/scripts/script.js" ])
+//   .pipe(concat('script.min.js'))
+//   .pipe(uglify())
+//   .pipe(gulp.dest('./assets/scripts'));
+// });
 
 gulp.task('minify-less', function() {
   return gulp.src('./assets/styles/style.less')
@@ -31,6 +28,6 @@ gulp.task('minify-less', function() {
 
 gulp.task('watch', function(){
   gulp.watch('assets/styles/*.less', ['minify-less']);
-  gulp.watch('assets/scripts/*.js', ['minify-scripts']);
+  // gulp.watch('assets/scripts/*.js', ['minify-scripts']);
   // gulp.watch('assets/webfontkit/*', ['fonts']);
 });
