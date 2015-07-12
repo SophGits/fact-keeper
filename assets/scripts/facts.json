@@ -1,0 +1,61 @@
+var facts = [
+  {
+    'question' : 'Which values are falsy in JavaScript?',
+    'answers' : [
+      'false',
+      '0',
+      'null',
+      'undefined',
+      'NaN'
+    ],
+    'incorrectAnswers' : [
+      'true',
+      '5',
+      '-1',
+      'hello, world.'
+    ],
+    'weighting' : 0.5,
+    'tags': [
+      'JavaScript',
+      'fundamentals'
+    ]
+  },
+  {
+    'question' : 'Foo?',
+    'answers' : [
+      'foo'
+    ],
+    'incorrectAnswers' : [
+      'bar'
+    ],
+    'weighting' : 0.7,
+    'tags': [
+      'JavaScript',
+      'functions'
+    ]
+  }
+] // end of facts
+
+
+
+// Structure to include:
+
+// question
+
+// correct answers
+
+// incorrect answers
+
+// ask me this again (weighting === 1)
+
+// don't ask me this (weighting === 0)
+
+// Wrongly-answered Qs to get higher rating (come up again more frequently)
+
+// Incorporate spaced repetition?
+
+// tags
+
+// type?
+
+
