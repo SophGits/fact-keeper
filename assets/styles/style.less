@@ -1,3 +1,40 @@
 @import 'reset';
 
-body { background: lightblue; }
+body {
+  background: lightblue;
+  font-family: 'Arial', sans-serif;
+  font-size: 1.4rem;
+}
+
+section {
+  padding: 1rem;
+  background-color: aliceblue;
+  margin: 2rem 1rem;
+}
+
+section.select-option {
+  text-align: right;
+  border: 1px solid blue;
+
+  button#random-question {}
+}
+
+section.progress-area {
+  border: 1px solid blue;
+  p { display: inline-block; }
+  p.current-score { color: orange; }
+  p.total { color: blue; }
+}
+
+section.question-section {
+  border: 1px solid orange;
+  header {
+    font-size: 1.8rem;
+  }
+  ul {
+    li { color: darkred; }
+    li[data-info~="correct"] {
+      color: limegreen;
+    }
+  }
+}

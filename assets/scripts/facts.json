@@ -33,6 +33,40 @@ var facts = [
       'JavaScript',
       'functions'
     ]
+  },
+  {
+    'question' : 'Bar?',
+    'answers' : [
+      'bar',
+      'Bar'
+    ],
+    'incorrectAnswers' : [
+      'foo',
+      'baz'
+    ],
+    'weighting' : 0.7,
+    'tags': [
+      'JavaScript',
+      'methods'
+    ]
+  },
+  {
+    'question' : 'What is the value of "someNum" in this example?',
+    'questionAid': "http://i.stack.imgur.com/N0mn0.png",
+    'answers' : [
+      '1'
+    ],
+    'incorrectAnswers' : [
+      'Hey!',
+      'foo',
+      'bar',
+      'baz'
+    ],
+    'weighting' : 0.2,
+    'tags': [
+      'JavaScript',
+      'scope'
+    ]
   }
 ] // end of facts
 
@@ -57,5 +91,3 @@ var facts = [
 // tags
 
 // type?
-
-

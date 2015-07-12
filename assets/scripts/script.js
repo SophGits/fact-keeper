@@ -1,11 +1,67 @@
 $(document).ready( function() {
-  console.log("Script file here.");
 
-  if(!!facts) {
-    console.log(facts);
-    $.each(facts, function(index, fact) {
-      console.log("\n" + index + ": " + fact.question + "\n");
-    })
+  var randomButton = document.getElementById("random-question");
+  randomButton.onclick = function() {
+    var randomIndex = Math.floor(Math.random() * facts.length);
+    displayQuestion(randomIndex);
   }
 
 });
+
+function displayQuestion(index) {
+  // get question and answers from facts data
+  var question = facts[index].question;
+  var answersCorrect = facts[index].answers;
+  var answersIncorrect = facts[index].incorrectAnswers;
+
+  // clear existing answers
+  var answersList = document.getElementsByClassName("answers-list")[0];
+  while (answersList.firstChild) {
+    answersList.removeChild(answersList.firstChild);
+  }
+
+  // question
+  var questionSection = document.getElementsByClassName("question-section")[0];
+  questionSection = questionSection.querySelectorAll("header")[0];
+  console.log(questionSection);
+  questionSection.innerHTML = question;
+
+  // put all answers in ul
+  mixedAnswersList = [];
+  answersCorrect.forEach(function( item ) {
+    var node = document.createElement('li');
+    node.setAttribute("data-info", "correct");
+    node.innerHTML = item;
+    mixedAnswersList.push(node);
+  });
+  answersIncorrect.forEach(function( item ) {
+    var node = document.createElement('li');
+    node.innerHTML = item;
+    mixedAnswersList.push(node);
+  });
+  mixedAnswersList = shuffle(mixedAnswersList);
+
+  mixedAnswersList.forEach(function ( answer ) {
+    answersList.appendChild(answer);
+  });
+}
+
+// Knoth Shuffle, from http://stackoverflow.com/questions/2450954/how-to-randomize-shuffle-a-javascript-array
+function shuffle(array) {
+  var currentIndex = array.length, temporaryValue, randomIndex ;
+
+  // While there remain elements to shuffle...
+  while (0 !== currentIndex) {
+
+    // Pick a remaining element...
+    randomIndex = Math.floor(Math.random() * currentIndex);
+    currentIndex -= 1;
+
+    // And swap it with the current element.
+    temporaryValue = array[currentIndex];
+    array[currentIndex] = array[randomIndex];
+    array[randomIndex] = temporaryValue;
+  }
+
+  return array;
+}
