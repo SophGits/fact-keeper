@@ -30,9 +30,26 @@ section.question-section {
   border: 1px solid orange;
   header {
     font-size: 1.8rem;
+    padding-left: 1rem;
   }
   ul {
-    li { color: darkred; }
+    li {
+      display: inline-block;
+      color: darkred;
+      padding: 2rem;
+      margin: 1rem;
+      vertical-align: top;
+      min-height: 4rem;
+      opacity: 0.8;
+      cursor: pointer;
+      border: 2px solid darkgray;
+      &:hover, &.selected {
+        opacity: 1;
+      }
+      &.selected {
+        border: 2px solid orange;
+      }
+    }
     li[data-info~="correct"] {
       color: limegreen;
     }
