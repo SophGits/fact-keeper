@@ -3,7 +3,6 @@ document.onreadystatechange = function () {
     return;
   }
 
-  // click button to display random Q&A set
   var randomButton = document.getElementById("random-question");
   randomButton.onclick = displayRandomQuestion;
 
@@ -18,17 +17,16 @@ document.onreadystatechange = function () {
 }
 
 function toggleAnswerSelect(e) {
-  var index = e.target.dataset.index;
-  var answerEl = document.getElementsByTagName('li')[index];
+  // var index = e.target.dataset.index;
+  var answerEl = e.target;
   var selectedIndex = answerEl.className.indexOf("selected");
 
   if( !!answerEl.className && selectedIndex < 0 ){
     answerEl.className = answerEl.className + " selected";
   } else if ( selectedIndex >= 0 ) {
-    var classArray =  answerEl.className.split(' ');
-    var i = classArray.indexOf("selected");
-    classArray.splice(i, 1);
-    answerEl.className = classArray.join(" ");
+    answerEl.className = answerEl.className.split(' ').filter(function( className ) {
+      className != "selected";
+    }).join(' ');
   } else {
     answerEl.className = "selected";
   }
@@ -41,11 +39,7 @@ function displayRandomQuestion() {
   var answersCorrect = facts[index].answers;
   var answersIncorrect = facts[index].incorrectAnswers;
 
-  // clear existing answers
-  var answersList = document.getElementsByClassName("answers-list")[0];
-  while (answersList.firstChild) {
-    answersList.removeChild(answersList.firstChild);
-  }
+  var answersList = clearExistingAnswers()
 
   // question
   var questionSection = document.getElementsByClassName("question-section")[0];
@@ -76,6 +70,15 @@ function displayRandomQuestion() {
     answer.setAttribute("data-index", index);
     answersList.appendChild(answer);
   });
+}
+
+
+function clearExistingAnswers() {
+  var answersList = document.getElementsByClassName("answers-list")[0];
+  while (answersList.firstChild) {
+    answersList.removeChild(answersList.firstChild);
+  }
+  return answersList;
 }
 
 // Knoth Shuffle, from http://stackoverflow.com/questions/2450954/how-to-randomize-shuffle-a-javascript-array
