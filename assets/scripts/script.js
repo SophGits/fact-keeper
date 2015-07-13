@@ -3,7 +3,6 @@ document.onreadystatechange = function () {
     return
   }
 
-  // click button to display rand q & a set
   var randomButton = document.getElementById("random-question");
   randomButton.onclick = displayRandomQuestion;
 
@@ -17,21 +16,20 @@ document.onreadystatechange = function () {
 }
 
 function toggleAnswerSelect(e) {
-  var index = e.target.dataset.index;
-  var answerEl = document.getElementsByTagName('li')[index];
+  var answerEl = e.target;
   var selectedIndex = answerEl.className.indexOf("selected");
 
   if( !!answerEl.className && selectedIndex < 0 ){
     answerEl.className = answerEl.className + " selected";
   } else if ( selectedIndex >= 0 ) {
-    var classArray =  answerEl.className.split(' ');
-    var i = classArray.indexOf("selected");
-    classArray.splice(i, 1);
-    answerEl.className = classArray.join(" ");
+    answerEl.className = answerEl.className.split(' ').filter(function(className) {
+      className != "selected";
+    }).join(" ");
   } else {
     answerEl.className = "selected";
   }
 }
+
 function displayRandomQuestion() {
   var randomIndex = Math.floor(Math.random() * facts.length);
 
