@@ -16,26 +16,25 @@ document.onreadystatechange = function () {
       answersList.attachEvent( 'onclick', toggleAnswerSelect );
     }
 
-    function toggleAnswerSelect(e) {
-      var index = e.target.dataset.index;
-      var answerEl = document.getElementsByTagName('li')[index];
-      var selectedIndex = answerEl.className.indexOf("selected");
-
-      if( !!answerEl.className && selectedIndex < 0 ){
-        answerEl.className = answerEl.className + " selected";
-      } else if ( selectedIndex >= 0 ) {
-        var classArray =  answerEl.className.split(' ');
-        var i = classArray.indexOf("selected");
-        classArray.splice(i, 1);
-        answerEl.className = classArray.join(" ");
-      } else {
-        answerEl.className = "selected";
-      }
-
-    }
-
   }
 }
+
+function toggleAnswerSelect(e) {
+  var index = e.target.dataset.index;
+  var answerEl = document.getElementsByTagName('li')[index];
+  var selectedIndex = answerEl.className.indexOf("selected");
+
+  if( !!answerEl.className && selectedIndex < 0 ){
+    answerEl.className = answerEl.className + " selected";
+  } else if ( selectedIndex >= 0 ) {
+    var classArray =  answerEl.className.split(' ');
+    var i = classArray.indexOf("selected");
+    classArray.splice(i, 1);
+    answerEl.className = classArray.join(" ");
+  } else {
+    answerEl.className = "selected";
+  }
+} // toggleAnswerSelect
 
 function displayQuestion(index) {
   // get question and answers from facts data
