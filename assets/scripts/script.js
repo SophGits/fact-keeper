@@ -17,7 +17,6 @@ document.onreadystatechange = function () {
 }
 
 function toggleAnswerSelect(e) {
-  // var index = e.target.dataset.index;
   var answerEl = e.target;
   var selectedIndex = answerEl.className.indexOf("selected");
 
@@ -48,21 +47,8 @@ function displayRandomQuestion() {
 
   // put all answers in ul
   mixedAnswersList = [];
-
-  function putAnswerNodesInList( answers, type ) {
-    console.log(arguments);
-    answers.forEach( function( item )  {
-      var node = document.createElement('li');
-      if ( type === "correct" ) {
-        node.setAttribute("data-info", "correct");
-      }
-      node.innerHTML = item;
-      mixedAnswersList.push(node);
-    });
-  }
-  var context;
-  putAnswerNodesInList.call(context, answersCorrect, 'correct');
-  putAnswerNodesInList.call(context, answersIncorrect, 'incorrect');
+  putAnswerNodesInList.call('', answersCorrect, 'correct');
+  putAnswerNodesInList.call('', answersIncorrect, 'incorrect');
 
   mixedAnswersList = shuffle(mixedAnswersList);
 
@@ -72,6 +58,17 @@ function displayRandomQuestion() {
   });
 }
 
+function putAnswerNodesInList( answers, type ) {
+  // console.log(arguments);
+  answers.forEach( function( item )  {
+    var node = document.createElement('li');
+    if ( type === "correct" ) {
+      node.setAttribute("data-info", "correct");
+    }
+    node.innerHTML = item;
+    mixedAnswersList.push(node);
+  });
+}
 
 function clearExistingAnswers() {
   var answersList = document.getElementsByClassName("answers-list")[0];
