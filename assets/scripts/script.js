@@ -1,7 +1,7 @@
 document.onreadystatechange = function () {
   if (document.readyState == "interactive") {
 
-    // click button to display rand q & a set
+    // click button to display random Q&A set
     var randomButton = document.getElementById("random-question");
     randomButton.onclick = function() {
       var randomIndex = Math.floor(Math.random() * facts.length);
@@ -56,17 +56,22 @@ function displayQuestion(index) {
 
   // put all answers in ul
   mixedAnswersList = [];
-  answersCorrect.forEach(function( item ) {
-    var node = document.createElement('li');
-    node.setAttribute("data-info", "correct");
-    node.innerHTML = item;
-    mixedAnswersList.push(node);
-  });
-  answersIncorrect.forEach(function( item ) {
-    var node = document.createElement('li');
-    node.innerHTML = item;
-    mixedAnswersList.push(node);
-  });
+
+  function putAnswerNodesInList( answers, type ) {
+    console.log(arguments);
+    answers.forEach( function( item )  {
+      var node = document.createElement('li');
+      if ( type === "correct" ) {
+        node.setAttribute("data-info", "correct");
+      }
+      node.innerHTML = item;
+      mixedAnswersList.push(node);
+    });
+  }
+  var context;
+  putAnswerNodesInList.call(context, answersCorrect, 'correct');
+  putAnswerNodesInList.call(context, answersIncorrect, 'incorrect');
+
   mixedAnswersList = shuffle(mixedAnswersList);
 
   mixedAnswersList.forEach(function ( answer, index ) {
