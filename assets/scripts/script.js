@@ -43,35 +43,37 @@ function displayRandomQuestion() {
   questionSection = questionSection.querySelectorAll("header")[0];
   questionSection.innerHTML = question;
 
-  // put all answers in ul
-  var mixedAnswersList = answersCorrect.map(function( item ) {
   var answerOptions = clearAnswerOptions();
 
+  var mixedAnswersList = createAnswersCollection(answersCorrect, answersIncorrect);
+  mixedAnswersList = shuffle(mixedAnswersList);
+  mixedAnswersList = shuffle(mixedAnswersList);
+
+  mixedAnswersList.forEach(function ( answer, index ) {
+    answer.setAttribute("data-index", index);
+    answerOptions.appendChild(answer);
+  });
+}
 
 function clearAnswerOptions() {
   answers = document.getElementById("answers-list");
   answers.innerHTML = "";
   return answers;
 }
+
+function createAnswersCollection(correct, incorrect) {
+  return correct.map(function( item ) {
     var node = document.createElement('li');
     node.setAttribute("data-info", "correct");
     node.innerHTML = item;
     return node;
   }).concat(
-    answersIncorrect.map(function( item ) {
+    incorrect.map(function( item ) {
       var node = document.createElement('li');
       node.innerHTML = item;
       return node;
     })
   );
-
-  mixedAnswersList = shuffle(mixedAnswersList);
-  mixedAnswersList = shuffle(mixedAnswersList);
-
-  mixedAnswersList.forEach(function ( answer, index ) {
-    answer.setAttribute("data-index", index);
-    answersList.appendChild(answer);
-  });
 }
 
 // Knoth Shuffle, from http://stackoverflow.com/questions/2450954/how-to-randomize-shuffle-a-javascript-array
