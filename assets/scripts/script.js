@@ -38,12 +38,6 @@ function displayRandomQuestion() {
   var answersCorrect = randomFact.answers;
   var answersIncorrect = randomFact.incorrectAnswers;
 
-  // clear existing answers
-  var answersList = document.getElementById("answers-list");
-  while (answersList.firstChild) {
-    answersList.removeChild(answersList.firstChild);
-  }
-
   // question
   var questionSection = document.getElementById("question-section");
   questionSection = questionSection.querySelectorAll("header")[0];
@@ -51,6 +45,14 @@ function displayRandomQuestion() {
 
   // put all answers in ul
   var mixedAnswersList = answersCorrect.map(function( item ) {
+  var answerOptions = clearAnswerOptions();
+
+
+function clearAnswerOptions() {
+  answers = document.getElementById("answers-list");
+  answers.innerHTML = "";
+  return answers;
+}
     var node = document.createElement('li');
     node.setAttribute("data-info", "correct");
     node.innerHTML = item;
