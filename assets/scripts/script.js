@@ -5,10 +5,7 @@ document.onreadystatechange = function () {
 
   // click button to display rand q & a set
   var randomButton = document.getElementById("random-question");
-  randomButton.onclick = function() {
-    var randomIndex = Math.floor(Math.random() * facts.length);
-    displayQuestion(randomIndex);
-  }
+  randomButton.onclick = displayRandomQuestion;
 
   // set listener for answers
   var answersList = document.getElementById("answers-list");
@@ -35,12 +32,13 @@ function toggleAnswerSelect(e) {
     answerEl.className = "selected";
   }
 }
+function displayRandomQuestion() {
+  var randomIndex = Math.floor(Math.random() * facts.length);
 
-function displayQuestion(index) {
-  // get question and answers from facts data
-  var question = facts[index].question;
-  var answersCorrect = facts[index].answers;
-  var answersIncorrect = facts[index].incorrectAnswers;
+  var randomFact = facts[randomIndex]
+  var question = randomFact.question;
+  var answersCorrect = randomFact.answers;
+  var answersIncorrect = randomFact.incorrectAnswers;
 
   // clear existing answers
   var answersList = document.getElementById("answers-list");
