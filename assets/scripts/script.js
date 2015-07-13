@@ -1,6 +1,6 @@
 document.onreadystatechange = function () {
   if (document.readyState == "interactive") {
-
+    console.log('here')
     // click button to display rand q & a set
     var randomButton = document.getElementById("random-question");
     randomButton.onclick = function() {
@@ -9,7 +9,7 @@ document.onreadystatechange = function () {
     }
 
     // set listener for answers
-    var answersList = document.getElementsByClassName("answers-list")[0];
+    var answersList = document.getElementById("answers-list");
     if( answersList.addEventListener ) {
       answersList.addEventListener( 'click', toggleAnswerSelect, false );
     } else if ( answersList.attachEvent ) {
@@ -44,13 +44,13 @@ function displayQuestion(index) {
   var answersIncorrect = facts[index].incorrectAnswers;
 
   // clear existing answers
-  var answersList = document.getElementsByClassName("answers-list")[0];
+  var answersList = document.getElementById("answers-list");
   while (answersList.firstChild) {
     answersList.removeChild(answersList.firstChild);
   }
 
   // question
-  var questionSection = document.getElementsByClassName("question-section")[0];
+  var questionSection = document.id("question-section");
   questionSection = questionSection.querySelectorAll("header")[0];
   questionSection.innerHTML = question;
 
