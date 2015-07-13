@@ -1,22 +1,20 @@
 document.onreadystatechange = function () {
-  if (document.readyState == "interactive") {
-
-    // click button to display random Q&A set
-    var randomButton = document.getElementById("random-question");
-    randomButton.onclick = function() {
-      var randomIndex = Math.floor(Math.random() * facts.length);
-      displayQuestion(randomIndex);
-    }
-
-    // set listener for answers
-    var answersList = document.getElementsByClassName("answers-list")[0];
-    if( answersList.addEventListener ) {
-      answersList.addEventListener( 'click', toggleAnswerSelect, false );
-    } else if ( answersList.attachEvent ) {
-      answersList.attachEvent( 'onclick', toggleAnswerSelect );
-    }
-
+  if (document.readyState != "interactive") {
+    return;
   }
+
+  // click button to display random Q&A set
+  var randomButton = document.getElementById("random-question");
+  randomButton.onclick = displayRandomQuestion;
+
+  // set listener for answers
+  var answersList = document.getElementsByClassName("answers-list")[0];
+  if( answersList.addEventListener ) {
+    answersList.addEventListener( 'click', toggleAnswerSelect, false );
+  } else if ( answersList.attachEvent ) {
+    answersList.attachEvent( 'onclick', toggleAnswerSelect );
+  }
+
 }
 
 function toggleAnswerSelect(e) {
@@ -36,7 +34,8 @@ function toggleAnswerSelect(e) {
   }
 } // toggleAnswerSelect
 
-function displayQuestion(index) {
+function displayRandomQuestion() {
+  var index = Math.floor(Math.random() * facts.length);
   // get question and answers from facts data
   var question = facts[index].question;
   var answersCorrect = facts[index].answers;
