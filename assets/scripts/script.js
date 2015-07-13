@@ -49,23 +49,25 @@ function displayQuestion(index) {
   }
 
   // question
-  var questionSection = document.id("question-section");
+  var questionSection = document.getElementById("question-section");
   questionSection = questionSection.querySelectorAll("header")[0];
   questionSection.innerHTML = question;
 
   // put all answers in ul
-  mixedAnswersList = [];
-  answersCorrect.forEach(function( item ) {
+  var mixedAnswersList = answersCorrect.map(function( item ) {
     var node = document.createElement('li');
     node.setAttribute("data-info", "correct");
     node.innerHTML = item;
-    mixedAnswersList.push(node);
-  });
-  answersIncorrect.forEach(function( item ) {
-    var node = document.createElement('li');
-    node.innerHTML = item;
-    mixedAnswersList.push(node);
-  });
+    return node;
+  }).concat(
+    answersIncorrect.map(function( item ) {
+      var node = document.createElement('li');
+      node.innerHTML = item;
+      return node;
+    })
+  );
+
+  mixedAnswersList = shuffle(mixedAnswersList);
   mixedAnswersList = shuffle(mixedAnswersList);
 
   mixedAnswersList.forEach(function ( answer, index ) {
