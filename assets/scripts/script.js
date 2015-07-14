@@ -8,11 +8,7 @@ document.onreadystatechange = function () {
 
   // set listener for answers
   var answersList = document.getElementsByClassName("answers-list")[0];
-  if( answersList.addEventListener ) {
-    answersList.addEventListener( 'click', toggleAnswerSelect, false );
-  } else if ( answersList.attachEvent ) {
-    answersList.attachEvent( 'onclick', toggleAnswerSelect );
-  }
+  addEvent( answersList, 'click', toggleAnswerSelect );
 
 }
 
