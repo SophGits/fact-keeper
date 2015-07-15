@@ -7,17 +7,18 @@
    <!-- <script src="assets/scripts/jquery-2.1.4.min.js"></script> -->
    <!--- <script src="assets/scripts/script.min.js"></script> -->
    <script src="assets/scripts/facts.json"></script>
+   <script src="assets/scripts/shuffle.js"></script>
    <script src="assets/scripts/script.js"></script>
 </head>
 <body>
 
   <section class="select-option">
-    <input id="next-question" type="button" value="Next Question">
+    <input id="next-question" type="button" value="New Set of 5 Questions">
     <input id="random-question" type="button" value="Random Question">
   </section>
 
   <section class="progress-area">
-    <p class="current-score">3</p> out of <p class="total">5</p>
+    <p id="current-score">0</p> out of <p id="total">0</p>
   </section>
 
   <section class="question-section">
