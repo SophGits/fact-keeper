@@ -1,7 +1,7 @@
 @import 'reset';
 
 body {
-  background: lightblue;
+  background: lightyellow;
   font-family: 'Arial', sans-serif;
   font-size: 1.4rem;
 }
@@ -16,6 +16,10 @@ section.select-option {
   text-align: right;
   border: 1px solid blue;
 
+  #new-batch,
+  #next-batch-question { cursor: pointer; }
+  #next-batch-question.grey-out { cursor: auto; color: lightgray; }
+
   #next-question {
     margin: 0 1rem;
     background-color: lawngreen;
@@ -26,8 +30,8 @@ section.select-option {
 section.progress-area {
   border: 1px solid blue;
   p { display: inline-block; }
-  p#current-score { color: orange; }
-  p#total { color: blue; }
+  p#current-question-number { color: orange; }
+  p#question-total { color: blue; }
 }
 
 section.question-section {
