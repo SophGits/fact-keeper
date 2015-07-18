@@ -51,6 +51,54 @@ var facts = [
     ]
   },
   {
+    'question' : 'Question 1',
+    'answers' : [
+      'Answer c',
+      'Answer d'
+    ],
+    'incorrectAnswers' : [
+      'Answer b',
+      'Answer a'
+    ],
+    'weighting' : 0.7,
+    'tags': [
+      'JavaScript',
+      'methods'
+    ]
+  },
+  {
+    'question' : 'Question 2',
+    'answers' : [
+      'Answer e',
+      'Answer f'
+    ],
+    'incorrectAnswers' : [
+      'Answer g',
+      'Answer h'
+    ],
+    'weighting' : 0.7,
+    'tags': [
+      'JavaScript',
+      'methods'
+    ]
+  },
+  {
+    'question' : 'Question 3',
+    'answers' : [
+      'Answer i',
+      'Answer j'
+    ],
+    'incorrectAnswers' : [
+      'Answer k',
+      'Answer l'
+    ],
+    'weighting' : 0.7,
+    'tags': [
+      'JavaScript',
+      'methods'
+    ]
+  },
+  {
     'question' : 'What is the value of "someNum" in this example?',
     'questionAid': "http://i.stack.imgur.com/N0mn0.png",
     'answers' : [
