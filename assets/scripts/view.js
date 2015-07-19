@@ -39,14 +39,10 @@ function toggleAnswerSelect(e) {
   var answerEl = e.target;
   var selectedIndex = answerEl.className.indexOf("selected");
 
-  if( !!answerEl.className && selectedIndex < 0 ){
-    answerEl.className = answerEl.className + " selected";
-  } else if ( selectedIndex >= 0 ) {
-    answerEl.className = answerEl.className.split(' ').filter(function( className ) {
-      className != "selected";
-    }).join(' ');
+  if ( !selectedIndex || selectedIndex >= 0 ) {
+    removeClass(answerEl, "selected");
   } else {
-    answerEl.className = "selected";
+    addClass(answerEl, "selected");
   }
 } // toggleAnswerSelect
 
