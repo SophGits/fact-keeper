@@ -8,25 +8,26 @@
    <!--- <script src="assets/scripts/script.min.js"></script> -->
    <script src="assets/scripts/facts.json"></script>
    <script src="assets/scripts/shuffle.js"></script>
-   <script src="assets/scripts/script.js"></script>
+   <script src="assets/scripts/batch.js"></script>
+   <script src="assets/scripts/helper.js"></script>
+   <script src="assets/scripts/view.js"></script>
 </head>
 <body>
 
   <section class="select-option">
-    <input id="next-question" type="button" value="New Set of 5 Questions">
-    <input id="random-question" type="button" value="Random Question">
+    <input id="new-batch" type="button" value="New batch of 3 Qs">
+    <input id="next-batch-question" type="button" value="Next (batch) Question" class="grey-out">
   </section>
 
   <section class="progress-area">
-    <p id="current-score">0</p> out of <p id="total">0</p>
+    Question <p id="current-question-number">0</p> out of <p id="question-total">0</p>
+    <br />
+    Score: <p id="current-score">0</p> out of <p id="target">0</p>
   </section>
 
   <section class="question-section">
-    <header>Question 1</header>
+    <header></header>
     <ul class="answers-list">
-      <li>Answer 1</li>
-      <li>Answer 2</li>
-      <li>Answer 3</li>
     </ul>
   </section>
 
