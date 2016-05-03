@@ -45,32 +45,36 @@ function toggleAnswerSelect(e) {
   }
 } // toggleAnswerSelect
 
-function displayRandomQuestion() {
-  var index = Math.floor(Math.random() * facts.length);
-  // get question and answers from facts data
-  var question = facts[index].question;
-  var answersCorrect = facts[index].answers;
-  var answersIncorrect = facts[index].incorrectAnswers;
 
-  var answersList = clearExistingAnswers()
+function updateProgressCounter( score ) {
+  document.getElementById("current-score").innerHTML = score;
+}
 
-  // question
-  var questionSection = document.getElementsByClassName("question-section")[0];
-  questionSection = questionSection.querySelectorAll("header")[0];
-  questionSection.innerHTML = question;
-
-  // put all answers in ul
-  mixedAnswersList = [];
-  putAnswerNodesInList.call('', answersCorrect, 'correct');
-  putAnswerNodesInList.call('', answersIncorrect, 'incorrect');
-
-  mixedAnswersList = shuffle(mixedAnswersList);
-
-  mixedAnswersList.forEach(function ( answer, index ) {
-    answer.setAttribute("data-index", index);
-    answersList.appendChild(answer);
+function putAnswerNodesInList( answers, type ) {
+  // console.log(arguments);
+  answers.forEach( function( item )  {
+    var node = document.createElement('li');
+    if ( type === "correct" ) {
+      node.setAttribute("data-info", "correct");
+    }
+    node.innerHTML = item;
+    mixedAnswersList.push(node);
   });
 }
+
+function clearExistingAnswers() {
+  var questionSection = document.getElementsByClassName("question-section")[0];
+  questionSection = questionSection.querySelectorAll("header")[0];
+  questionSection.innerHTML = "Start again";
+
+
+  var answersList = document.getElementsByClassName("answers-list")[0];
+  while (answersList.firstChild) {
+    answersList.removeChild(answersList.firstChild);
+  }
+  return answersList;
+}
+
 
 function displayNextQuestion() {
   if( window.series.status === "new" ) {
@@ -103,33 +107,4 @@ function displayNextQuestion() {
       series.status = "new";
     }
   }
-}
-
-function updateProgressCounter( score ) {
-  document.getElementById("current-score").innerHTML = score;
-}
-
-function putAnswerNodesInList( answers, type ) {
-  // console.log(arguments);
-  answers.forEach( function( item )  {
-    var node = document.createElement('li');
-    if ( type === "correct" ) {
-      node.setAttribute("data-info", "correct");
-    }
-    node.innerHTML = item;
-    mixedAnswersList.push(node);
-  });
-}
-
-function clearExistingAnswers() {
-  var questionSection = document.getElementsByClassName("question-section")[0];
-  questionSection = questionSection.querySelectorAll("header")[0];
-  questionSection.innerHTML = "Start again";
-
-
-  var answersList = document.getElementsByClassName("answers-list")[0];
-  while (answersList.firstChild) {
-    answersList.removeChild(answersList.firstChild);
-  }
-  return answersList;
 }
